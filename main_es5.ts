@@ -166,7 +166,7 @@ const Cloudflare = /** @class */ (function(): ClassCF{
         options.headers['Content-Type'] = 'application/json';
         options.headers['Authorization'] = `Bearer ${this.token}`;
         const xhr = await ngx.fetch(url, options),
-            json = await xhr.json();
+            json = await xhr.json() as CFResult;
         if(!xhr.ok || !json.success)
             throw new Error(Cloudflare.anaError(json));
         return json;
